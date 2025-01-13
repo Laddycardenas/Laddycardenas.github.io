@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: black;
+            }
+            body {
+                background-image: url('background.jpeg');
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .titulo {
+                font-size: 50px;
+                color: #d34d63;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                margin: 20px 0;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .acerca {
+                background-color: rgba(243, 185, 127, 0.8);
+                margin: 0 100px 20px;
+                font-size: 18px;
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;
+                color: #333;
+            }
+            .layout {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 20px;
+                margin: 20px;
+            }
+            .opc {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .contenedor {
+                background-color: rgba(243, 187, 155, 0.9);
+                border: 2px solid #dcdcdc;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                width: 200px;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .contenedor:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+            .contenedor img {
+                width: 100%;
+                border-radius: 10px;
+            }
+            .contenedor h3 {
+                margin: 10px 0 0;
+                font-size: 18px;
+                color: #333;
+            }
+            #contenido {
+                display: none;
+                flex-grow: 1;
+                padding: 20px;
+                background-color: rgba(254, 222, 204, 0.9);
+                border: 1px solid #dcdcdc;
+                border-radius: 10px;
+            }
+            #contenido h3 {
+                color: #d34d63;
+            }
+            textarea {
+                width: 100%;
+                height: 100px;
+                margin-top: 10px;
+                border: 1px solid #1100ff;
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 16px;
+            }
+            .logo {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                width: 150px;
+                transition: transform 0.2s;
+            }
+            .logo:hover {
+                transform: scale(1.1);
+            }
+        </style>
+        <script>
+            function mostrarContenido(categoria) {
+                const contenido = document.getElementById('contenido');
+                const titulo = contenido.querySelector('h3');
+                const texto = contenido.querySelector('p');
+
+                contenido.style.display = 'block';
+
+                switch (categoria) {
+                    case 'Desayunos':
+                        titulo.textContent = 'Recetas de Desayunos';
+                        texto.innerHTML = `
+                            <strong>1. Tostadas de Aguacate con Huevo</strong><br>
+                            Ingredientes: Pan integral, aguacate, huevo, sal, pimienta.<br>
+                            Instrucciones: Tuesta el pan, aplasta el aguacate sobre él, cocina el huevo y colócalo encima. Sazona con sal y pimienta al gusto.<br><br>
+                            
+                            <strong>2. Panqueques Esponjosos</strong><br>
+                            Ingredientes: Harina, leche, huevo, azúcar, polvo de hornear, mantequilla.<br>
+                            Instrucciones: Mezcla todos los ingredientes hasta obtener una masa suave. Cocina en una sartén caliente hasta que estén dorados y sirve con miel o frutas.<br><br>
+
+                            <strong>3. Yogur con Frutas y Granola</strong><br>
+                            Ingredientes: Yogur natural, frutas frescas (fresas, plátano, etc.), granola.<br>
+                            Instrucciones: Sirve el yogur en un tazón, agrega las frutas picadas y cubre con granola.<br>
+                        `;
+                        break;
+                    case 'Postres':
+                        titulo.textContent = 'Recetas de Postres';
+                        texto.innerHTML = `
+                            <strong>1. Brownies de Chocolate</strong><br>
+                            Ingredientes: Chocolate, mantequilla, azúcar, huevo, harina, cacao en polvo.<br>
+                            Instrucciones: Derrite el chocolate con la mantequilla, mezcla con los demás ingredientes y hornea a 180°C durante 25 minutos.<br><br>
+
+                            <strong>2. Galletas de Avena</strong><br>
+                            Ingredientes: Avena, mantequilla, azúcar, huevo, harina, polvo de hornear.<br>
+                            Instrucciones: Mezcla todos los ingredientes, forma bolitas y hornea a 180°C durante 10-12 minutos.<br><br>
+
+                            <strong>3. Flan Casero</strong><br>
+                            Ingredientes: Leche, azúcar, huevos, vainilla.<br>
+                            Instrucciones: Carameliza azúcar en una sartén, mezcla los otros ingredientes y vierte sobre el caramelo. Hornea a baño maría por 40 minutos.<br>
+                        `;
+                        break;
+                    case 'Salsas y Aderezos':
+                        titulo.textContent = 'Recetas de Salsas y Aderezos';
+                        texto.innerHTML = `
+                            <strong>1. Salsa de Tomate Casera</strong><br>
+                            Ingredientes: Tomates, ajo, cebolla, aceite de oliva, sal, azúcar.<br>
+                            Instrucciones: Sofríe la cebolla y ajo en aceite, añade los tomates triturados y cocina por 20 minutos. Agrega sal y azúcar al gusto.<br><br>
+
+                            <strong>2. Aderezo César</strong><br>
+                            Ingredientes: Mayonesa, queso parmesano, ajo, limón, salsa inglesa.<br>
+                            Instrucciones: Mezcla todos los ingredientes hasta obtener una salsa cremosa.<br><br>
+
+                            <strong>3. Salsa de Mostaza y Miel</strong><br>
+                            Ingredientes: Mostaza, miel, vinagre, aceite de oliva.<br>
+                            Instrucciones: Mezcla todos los ingredientes hasta que estén bien integrados.<br>
+                        `;
+                        break;
+                    case 'Ensaladas':
+                        titulo.textContent = 'Recetas de Ensaladas';
+                        texto.innerHTML = `
+                            <strong>1. Ensalada Caprese</strong><br>
+                            Ingredientes: Tomate, mozzarella, albahaca, aceite de oliva, vinagre balsámico.<br>
+                            Instrucciones: Corta el tomate y la mozzarella en rodajas, colócalos en un plato y agrega hojas de albahaca. Rocíe con aceite de oliva y vinagre balsámico.<br><br>
+
+                            <strong>2. Ensalada de Quinoa</strong><br>
+                            Ingredientes: Quinoa cocida, pepino, tomate, cebolla morada, cilantro, limón.<br>
+                            Instrucciones: Mezcla todos los ingredientes en un tazón y adereza con limón y aceite de oliva.<br><br>
+
+                            <strong>3. Ensalada Mediterránea</strong><br>
+                            Ingredientes: Lechuga, pepino, tomate, aceitunas, queso feta, cebolla roja.<br>
+                            Instrucciones: Mezcla los ingredientes y adereza con aceite de oliva y orégano.<br>
+                        `;
+                        break;
+                }
+            }
+
+            function iniciarSesion() {
+                alert('Función de iniciar sesión en desarrollo.');
+            }
+        </script>
+    </head>
+    <body>
+        <img src="logo.png" alt="Logo" class="logo" onclick="iniciarSesion()">
+        <div>
+            <div class="titulo">RECETAS</div>
+            <div class="acerca">
+                ¿Está buscando ideas para el desayuno, postres o un platillo especial? Haga clic en las categorías a continuación para descubrir deliciosas recetas que puede probar.
+            </div>
+            <div class="layout">
+                <div class="opc">
+                    <div class="contenedor" onclick="mostrarContenido('Desayunos')">
+                        <img src="DESAYUNOS.jpg" alt="Desayunos">
+                        <h3>Desayunos</h3>
+                    </div>
+                    <div class="contenedor" onclick="mostrarContenido('Postres')">
+                        <img src="POSTRES.jpg" alt="Postres">
+                        <h3>Postres</h3>
+                    </div>
+                    <div class="contenedor" onclick="mostrarContenido('Salsas y Aderezos')">
+                        <img src="salsasyaderezos.jpg" alt="Salsas y Aderezos">
+                        <h3>Salsas y Aderezos</h3>
+                    </div>
+                    <div class="contenedor" onclick="mostrarContenido('Ensaladas')">
+                        <img src="ENSALADAS.jpg" alt="Ensaladas">
+                        <h3>Ensaladas</h3>
+                    </div>
+                </div>
+                <div id="contenido">
+                    <h3></h3>
+                    <p></p>
+                    <textarea placeholder="Escribe tus propias recetas aquí..."></textarea>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
